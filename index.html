@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Katapulta</title>
+    <title>Plantiano Flight - Leć Kreciku</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -24,10 +24,42 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Katapulta</div>
+        <div id="unity-build-title">Plantiano Flight - Leć Kreciku &copy; 2026 Adam Misiura</div>
       </div>
     </div>
     <script>
+      // ==========================================
+      // LICENSED DOMAIN LOCK (Ochrona Autorska)
+      // Właściciel praw autorskich: Adam Misiura
+      // ==========================================
+      const currentHost = window.location.hostname.toLowerCase();
+      const isAuthorized = 
+        currentHost === "adamgithub2.github.io" || 
+        currentHost.endsWith(".adamgithub2.github.io") || 
+        currentHost === "localhost" || 
+        currentHost === "127.0.0.1" || 
+        currentHost === "";
+
+      if (!isAuthorized) {
+        document.body.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#0d1117;color:#f0f6fc;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;text-align:center;padding:24px;box-sizing:border-box;">
+            <div style="background:#161b22;border:1px solid #30363d;border-radius:16px;padding:32px;max-width:520px;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+              <div style="font-size:48px;margin-bottom:16px;">🛑</div>
+              <h2 style="margin:0 0 12px;color:#f85149;font-size:24px;">Dostęp zablokowany</h2>
+              <p style="margin:0 0 16px;color:#8b949e;line-height:1.5;">
+                Gra <b>Plantiano Flight (Leć Kreciku)</b> jest chroniona prawem autorskim i licencją.<br>
+                Właścicielem praw autorskich jest <b>Adam Misiura</b>.
+              </p>
+              <p style="margin:0 0 24px;color:#e6edf3;font-size:14px;background:#21262d;padding:12px;border-radius:8px;border:1px solid #30363d;">
+                Wykryto nieautoryzowaną domenę: <code style="color:#ff7b72;">${currentHost}</code>.<br>
+                Gra może być uruchamiana wyłącznie na oficjalnej stronie autora.
+              </p>
+              <a href="https://adamgithub2.github.io/leckreciku/" style="display:inline-block;background:#238636;color:white;text-decoration:none;font-weight:bold;padding:12px 24px;border-radius:8px;font-size:16px;">Przejdź do oficjalnej gry</a>
+            </div>
+          </div>
+        `;
+        throw new Error("SiteLock: Unauthorized domain " + currentHost);
+      }
       let canvas = document.querySelector("#unity-canvas");
       let fullscreenContainer = document.querySelector("#unity-fullscreen-container");
 
