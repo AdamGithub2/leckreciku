@@ -6,8 +6,55 @@
     <title>Plantiano Flight - Leć Kreciku</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      #rotate-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(13, 17, 23, 0.96);
+        z-index: 999999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      @media screen and (orientation: portrait) and (max-width: 950px) {
+        #rotate-overlay {
+          display: flex !important;
+        }
+      }
+      .rotate-phone-icon {
+        font-size: 56px;
+        margin-bottom: 20px;
+        display: inline-block;
+        animation: rotatePhone 2.2s infinite ease-in-out;
+      }
+      @keyframes rotatePhone {
+        0% { transform: rotate(0deg); }
+        40% { transform: rotate(-90deg); }
+        70% { transform: rotate(-90deg); }
+        100% { transform: rotate(0deg); }
+      }
+    </style>
   </head>
   <body>
+    <div id="rotate-overlay">
+      <div class="rotate-phone-icon">📱 ➔ 🔄</div>
+      <h2 style="margin: 0 0 12px; color: #ffcc00; font-size: 24px; font-weight: bold;">Obróć telefon poziomo</h2>
+      <p style="margin: 0 0 14px; color: #e6edf3; font-size: 16px; max-width: 320px; line-height: 1.5;">
+        <b>Leć Kreciku</b> to zręcznościowa gra pozioma (landscape).
+      </p>
+      <p style="margin: 0; color: #8b949e; font-size: 14px; max-width: 300px; line-height: 1.4;">
+        Włącz automatyczne obracanie w telefonie i przekręć go na bok, aby naciągać procę i śledzić lot!
+      </p>
+    </div>
     <div id="unity-container" class="unity-desktop">
       <div id="unity-fullscreen-container">
         <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
